@@ -3,8 +3,7 @@ use windows::Win32::Graphics::Direct3D11::*;
 use windows::Win32::Graphics::Dxgi::*;
 use windows::Win32::Graphics::Dxgi::Common::*;
 use windows::Win32::Graphics::Direct3D::*;
-use windows::core::{Interface, ComInterface};
-use std::ptr;
+use windows::core::Interface;
 
 pub struct DesktopCapture {
     device: ID3D11Device,
@@ -42,8 +41,7 @@ impl DesktopCapture {
             let output1: IDXGIOutput1 = output.cast().context("Failed to cast to IDXGIOutput1")?;
             
             let duplication = output1.DuplicateOutput(&device).context("Failed to duplicate output")?;
-            let mut desc = DXGI_OUTDUPL_DESC::default();
-            duplication.GetDesc(&mut desc);
+            let desc = duplication.GetDesc();
             
             let texture_desc = D3D11_TEXTURE2D_DESC {
                 Width: desc.ModeDesc.Width,

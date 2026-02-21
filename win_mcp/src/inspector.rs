@@ -1,6 +1,6 @@
 use windows::Win32::UI::Accessibility::*;
 use windows::Win32::System::Com::*;
-use windows::core::{Interface, BSTR};
+use windows::core::BSTR;
 use anyhow::{Result, Context};
 use serde::{Serialize, Deserialize};
 
@@ -17,10 +17,13 @@ pub struct UiInspector {
     automation: IUIAutomation,
 }
 
+unsafe impl Send for UiInspector {}
+unsafe impl Sync for UiInspector {}
+
 impl UiInspector {
     pub fn new() -> Result<Self> {
         unsafe {
-            CoInitializeEx(None, COINIT_MULTITHREADED).ok();
+            let _ = CoInitializeEx(None, COINIT_MULTITHREADED).ok();
             let automation: IUIAutomation = CoCreateInstance(&CUIAutomation, None, CLSCTX_ALL)
                 .context("Failed to create UI Automation instance")?;
             Ok(Self { automation })

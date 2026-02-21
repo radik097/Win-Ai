@@ -21,7 +21,8 @@ Jarvis is a powerful Windows-native AI agent designed to control a computer via 
 ### 1. Requirements
 - **Windows 10/11**
 - **Rust Toolchain** (latest stable)
-- **Visual Studio Build Tools** (with Windows SDK)
+- **Visual Studio Build Tools**
+- **Windows SDK**: [Direct Installer (.exe)](https://go.microsoft.com/fwlink/?linkid=2349110) | [Download Page](https://learn.microsoft.com/en-us/windows/apps/windows-sdk/downloads)
 - **Interception Driver**:
   1. Download [Interception](https://github.com/oblitum/Interception/releases).
   2. Run `install-interception.exe` as Administrator.

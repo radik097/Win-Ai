@@ -1,0 +1,20 @@
+# Rust
+/target
+/win_mcp/target
+**/*.rs.bk
+Cargo.lock
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & Temp
+*.log
+*.tmp
+.env
+
+# Windows specific
+Desktop.ini
+Thumbs.db
